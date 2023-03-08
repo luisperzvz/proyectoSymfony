@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articulo{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">VISTA DE UN ARTÍCULO</h1>
+
+    <div class="container">
+        <div class="">
+            <div class="col-auto mt-3">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="text-center">Titulo</th>
+                <td class="text-center">{{ articulo.titulo }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Fecha</th>
+                <td class="text-center">{{ articulo.fecha ? articulo.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Texto</th>
+                <td class="text-center">{{ articulo.texto }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Comentario</th>
+                <td class="text-center">{{ articulo.comentario }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Resumen</th>
+                <td class="text-center">{{ articulo.resumen }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Categoria</th>
+                <td class="text-center">{{ articulo.categoria }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Url</th>
+                <td class="text-center">{{ articulo.url }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Medio</th>
+                <td class="text-center">{{ articulo.medio }}</td>
+            </tr>
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+    <div class="d-flex justify-content-evenly margin:3 mb-3">
+    <a class="btn-dark btn-lg text-decoration-none" href="{{ path('app_articulos_index') }}">VOLVER A LA LISTA</a>
+
+    <a class="btn-success btn-lg text-decoration-none" href="{{ path('app_articulos_edit', {'id': articulo.id}) }}">EDITAR</a>
+
+    {{ include('articulos/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

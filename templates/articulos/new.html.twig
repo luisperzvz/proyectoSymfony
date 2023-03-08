@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creación de un artículo{% endblock %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">CREANDO UN NUEVO ARTÍCULO</h1>
+<div class="container">
+    {{ include('articulos/_form.html.twig') }}
+
+    <div class="d-flex justify-content-evenly mb-3">
+    <a class="btn-success btn-lg text-decoration-none" href="{{ path('app_articulos_index') }}">VOLVER A LA LISTA</a>
+    </div>
+</div>
+{% endblock %}

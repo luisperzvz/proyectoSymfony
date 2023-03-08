@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de articulos{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">ESTOS SON TODOS LOS ARTÍCULOS</h1>
+
+    <div class="d-flex bd-highlight p-3">
+        <div class="btn-group-vertical">
+        <a href="/articulos/opinion" button type="button" class="btn btn-secondary">OPINIÓN</a>
+        <button type="button" class="btn btn-dark">DIVULGACIÓN</button>
+        <button type="button" class="btn btn-secondary">INFORMATIVO</button>
+        <button type="button" class="btn btn-dark">REPORTAJE</button>
+        <button type="button" class="btn btn-secondary">EDITORIAL</button>
+        <button type="button" class="btn btn-dark">COLUMNA</button>
+        <button type="button" class="btn btn-secondary">ENTREVISTA</button>
+        <button type="button" class="btn btn-dark">CRÍTICA</button>
+        <button type="button" class="btn btn-secondary">OTROS</button>
+        
+        </div> 
+    <div class="container">
+        <div class="">
+            <div class="col-auto mt-3">
+            <table class="table table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th>Titulo</th>
+                <th>Fecha</th>
+                <th>Resumen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for articulo in articulos %}
+            <tr>
+                <td class="text-center">{{ articulo.titulo }}</td>
+                <td class="text-center">{{ articulo.fecha ? articulo.fecha|date('Y-m-d') : '' }}</td>
+                <td class="text-center">{{ articulo.resumen }}</td>
+                <td class="text-center">
+                    <a class="btn btn-outline-success" href="{{ path('app_articulos_show', {'id': articulo.id}) }}">VER ARTÍCULO</a>
+                    <a class="btn btn-outline-dark" href="{{ path('app_articulos_edit', {'id': articulo.id}) }}">EDITAR</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+</div>
+    <div class="container-fluid text-center ">
+    <a class="btn btn-outline-success active mb-5 p-4" href="{{ path('app_articulos_new') }}">CREAR UN NUEVO ARTÍCULO</a>
+    </div>
+{% endblock %}
